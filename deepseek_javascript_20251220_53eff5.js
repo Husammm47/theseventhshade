@@ -1,173 +1,119 @@
-// DOM Elements
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.querySelector('.nav-links');
-const backToTop = document.getElementById('backToTop');
-
-// Mobile Menu Toggle
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+// Celebration function
+document.getElementById('celebrateBtn').addEventListener('click', function() {
+    // Visual effects
+    this.innerHTML = '🎉 Congratulations! 🎉';
+    this.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
     
-    // Change icon based on menu state
-    const icon = menuToggle.querySelector('i');
-    if (navLinks.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        const icon = menuToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    });
-});
-
-// Back to Top Button
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTop.classList.add('show');
-    } else {
-        backToTop.classList.remove('show');
-    }
-});
-
-backToTop.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Animate elements on scroll
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.feature-card, .step, .resource-card');
+    // Create confetti
+    createConfetti();
     
-    elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
-        
-        if (elementPosition < screenPosition) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-};
-
-// Set initial state for animation
-document.querySelectorAll('.feature-card, .step, .resource-card').forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(20px)';
-    element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-});
-
-// Run animation on load and scroll
-window.addEventListener('load', animateOnScroll);
-window.addEventListener('scroll', animateOnScroll);
-
-// Typewriter effect for code window
-const codeLines = [
-    "// Deploy to Vercel in 3 steps",
-    "1. Push code to GitHub",
-    "2. Import to Vercel", 
-    "3. Your site is live!",
-    "",
-    "// It's really that simple",
-    "const deploy = () => {",
-    "  console.log('🚀 Website deployed!');",
-    "  return 'Success!';",
-    "}"
-];
-
-function typeWriter(element, lines, speed = 100) {
-    let lineIndex = 0;
-    let charIndex = 0;
-    let currentLine = '';
+    // Play success sound (optional)
+    playSuccessSound();
     
-    function type() {
-        if (lineIndex < lines.length) {
-            if (charIndex < lines[lineIndex].length) {
-                currentLine += lines[lineIndex].charAt(charIndex);
-                element.textContent = currentLine;
-                charIndex++;
-                setTimeout(type, speed);
-            } else {
-                currentLine += '\n';
-                element.textContent = currentLine;
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(type, speed);
-            }
-        }
-    }
-    
-    // Start typing after a delay
+    // Reset button after 3 seconds
     setTimeout(() => {
-        element.textContent = '';
-        type();
-    }, 1000);
+        this.innerHTML = '🎊 Click to Celebrate!';
+        this.style.background = 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)';
+    }, 3000);
+});
+
+// Create confetti animation
+function createConfetti() {
+    const colors = ['#0070f3', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+    
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.borderRadius = '50%';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = '-20px';
+        confetti.style.zIndex = '9999';
+        confetti.style.pointerEvents = 'none';
+        document.body.appendChild(confetti);
+        
+        // Animation
+        const animation = confetti.animate([
+            { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+            { transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+        ], {
+            duration: 2000 + Math.random() * 3000,
+            easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+        });
+        
+        // Remove after animation
+        animation.onfinish = () => confetti.remove();
+    }
 }
 
-// Initialize typewriter effect
-window.addEventListener('DOMContentLoaded', () => {
-    const codeElement = document.querySelector('.window-content code');
-    if (codeElement) {
-        typeWriter(codeElement, codeLines, 50);
+// Play success sound (uses Web Audio API)
+function playSuccessSound() {
+    try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+        oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+        oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+        
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.5);
+    } catch (e) {
+        // Audio not supported, continue silently
     }
-    
-    // Add syntax highlighting classes
-    setTimeout(() => {
-        const codeText = codeElement.textContent;
-        let highlightedCode = codeText
-            .replace(/(\/\/.*)/g, '<span class="comment">$1</span>')
-            .replace(/(console\.log|const|return)/g, '<span class="keyword">$1</span>')
-            .replace(/(deploy)/g, '<span class="function">$1</span>')
-            .replace(/(['"].*?['"])/g, '<span class="string">$1</span>');
-        
-        codeElement.innerHTML = highlightedCode;
-    }, 6000);
-});
+}
 
-// Add interactive feature to deploy button
-document.querySelector('.deploy-button-container .btn').addEventListener('click', function(e) {
-    if (!this.getAttribute('href').startsWith('http')) {
-        e.preventDefault();
-        
-        // Create a fun confirmation message
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deploying...';
+// Animate checklist items one by one
+document.addEventListener('DOMContentLoaded', () => {
+    const checklistItems = document.querySelectorAll('.checklist li');
+    
+    checklistItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-20px)';
         
         setTimeout(() => {
-            this.innerHTML = '<i class="fas fa-check"></i> Successfully Deployed!';
-            this.style.backgroundColor = '#10b981';
-            
-            // Reset after 3 seconds
-            setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-external-link-alt"></i> Deploy on Vercel Now';
-                this.style.backgroundColor = '';
-            }, 3000);
-        }, 1500);
-    }
+            item.style.transition = 'all 0.5s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'translateX(0)';
+        }, index * 200);
+    });
+    
+    // Update live status
+    updateStatus();
+});
+
+// Update deployment status
+function updateStatus() {
+    const statusText = document.querySelector('.status-text');
+    const infoItems = document.querySelectorAll('.info-item .value');
+    
+    // Simulate live updates
+    setInterval(() => {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        
+        // Update last deployed time
+        if (infoItems[3]) {
+            infoItems[3].textContent = timeString;
+        }
+    }, 60000); // Update every minute
+}
+
+// Add click effects to cards
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', function() {
+        this.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 150);
+    });
 });
