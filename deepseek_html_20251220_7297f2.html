@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>✅ Vercel Success!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="success">✅</div>
+        <h1>Vercel Deployment Successful!</h1>
+        <p>Your static site is now live on Vercel.</p>
+        
+        <div class="card">
+            <h2>What's Working:</h2>
+            <ul>
+                <li>✅ Static file hosting</li>
+                <li>✅ Automatic SSL</li>
+                <li>✅ Global CDN</li>
+                <li>✅ Custom domain ready</li>
+            </ul>
+        </div>
+        
+        <button onclick="showAlert()">Test JavaScript</button>
+        
+        <div class="footer">
+            <p>Deployed with ❤️ using Vercel</p>
+            <p>Current URL: <span id="currentUrl"></span></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('currentUrl').textContent = window.location.href;
+        function showAlert() {
+            alert('JavaScript is working! 🎉');
+        }
+    </script>
+</body>
+</html>
