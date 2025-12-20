@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevHub | Free Web Deployment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">DevHub</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#deploy">Deploy</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Deploy Your Code <span class="highlight">For Free</span></h1>
+                <p class="subtitle">Turn your HTML, CSS, and JavaScript projects into live websites with zero cost. Perfect for developers, students, and hobbyists.</p>
+                <div class="cta-buttons">
+                    <a href="#deploy" class="btn btn-primary">Deploy Now</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>100% Free</h3>
+                        <p>No credit card required</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Instant Setup</h3>
+                        <p>Deploy in minutes</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Unlimited Sites</h3>
+                        <p>As many as you need</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="window-title">deploy.js</span>
+                    </div>
+                    <div class="window-content">
+                        <pre><code>// Deploy to Vercel in 3 steps
+1. Push code to GitHub
+2. Import to Vercel
+3. Your site is live!
+
+// It's really that simple
+const deploy = () => {
+  console.log("🚀 Website deployed!");
+  return "Success!";
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Free Deployment</h2>
+            <p class="section-subtitle">Everything you need to get your projects online</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Instant Deployment</h3>
+                    <p>Connect your GitHub repository and deploy in seconds. Automatic updates on every push.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>SSL Included</h3>
+                    <p>Free automatic SSL certificates for all your domains. Your site is secure by default.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global CDN</h3>
+                    <p>Your site loads fast worldwide with built-in content delivery network.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Optimized</h3>
+                    <p>Responsive design ensures your site looks great on all devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deploy Guide -->
+    <section class="deploy-guide" id="deploy">
+        <div class="container">
+            <h2 class="section-title">Deploy in 3 Easy Steps</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload to GitHub</h3>
+                        <p>Create a new repository and upload your HTML, CSS, and JS files.</p>
+                        <div class="code-snippet">
+                            <code>git add .</code>
+                            <code>git commit -m "Initial commit"</code>
+                            <code>git push origin main</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Import to Vercel</h3>
+                        <p>Sign up at Vercel, connect GitHub, and import your repository.</p>
+                        <div class="code-snippet">
+                            <code>1. Go to vercel.com</code>
+                            <code>2. Click "Add New Project"</code>
+                            <code>3. Select your repository</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Your Site is Live!</h3>
+                        <p>That's it! Your website now has a public URL. Custom domain optional.</p>
+                        <div class="code-snippet">
+                            <code>✅ Deployment complete!</code>
+                            <code>🌐 https://your-site.vercel.app</code>
+                            <code>🔄 Auto-updates on git push</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deploy-button-container">
+                <a href="https://vercel.com" target="_blank" class="btn btn-primary btn-large">
+                    <i class="fas fa-external-link-alt"></i> Deploy on Vercel Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2 class="section-title">Free Resources</h2>
+            
+            <div class="resource-cards">
+                <a href="https://pages.github.com" target="_blank" class="resource-card">
+                    <h3>GitHub Pages</h3>
+                    <p>Free hosting directly from your GitHub repository.</p>
+                    <span class="resource-link">Visit <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://firebase.google.com" target="_blank" class="resource-card">
+                    <h3>Firebase</h3>
+                    <p>Hosting + database + authentication for free.</p>
+                    <span class="resource-link">Visit <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://supabase.com" target="_blank" class="resource-card">
+                    <h3>Supabase</h3>
+                    <p>Open source Firebase alternative with PostgreSQL.</p>
+                    <span class="resource-link">Visit <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="https://render.com" target="_blank" class="resource-card">
+                    <h3>Render</h3>
+                    <p>Free tier with PostgreSQL database included.</p>
+                    <span class="resource-link">Visit <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DevHub</h3>
+                    <p>Making web deployment accessible and free for everyone.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#deploy">Deploy Guide</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Free Platforms</h4>
+                    <ul>
+                        <li><a href="https://vercel.com" target="_blank">Vercel</a></li>
+                        <li><a href="https://netlify.com" target="_blank">Netlify</a></li>
+                        <li><a href="https://firebase.google.com" target="_blank">Firebase</a></li>
+                        <li><a href="https://supabase.com" target="_blank">Supabase</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Made with ❤️ for developers | This site is ready to deploy on Vercel!</p>
+                <p class="footer-note">Clone this repository, push to GitHub, and deploy instantly.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
